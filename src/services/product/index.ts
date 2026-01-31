@@ -1,5 +1,4 @@
 import axios from "axios"
-import { BASE_URL } from "../api"
 
 // Call API GET Product
 export async function getProduct() {
