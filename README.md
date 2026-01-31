@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# E-Commerce Product Detail Page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Product Detail Page (PDP) built using Create React App (CRA) as part of a frontend technical assessment.
 
-## Available Scripts
+The main focus of this project is frontend architecture, UI/UX handling, and clean, maintainable code structure rather than backend or deployment concerns.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js >= 18
+- npm or yarn
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+npm start
+```
 
-### `npm run build`
+### The application will run locally at:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+http://localhost:3000
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React** – Frontend library
+- **Create React App (CRA)** – Project bootstrapping
+- **TypeScript** – Static typing
+- **Tailwind CSS** – Utility-first styling
+- **Swiper** – Product image gallery and carousel
+- **Axios** – HTTP client for API requests
+- **React Query** – Server state management (data fetching, caching)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Project Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```txt
+src/
+ ├── components/          # Components that used for reusable (button, error state, text, etc.)
+ ├── hooks/               # Custom React Query hooks
+ ├── services/            # API service layer
+ ├── utils/               # Utility functions (e.g. currency formatter)
+ ├── pages/               # Page-level components
+ ├── sections/            # Place that i used to create section per page that will be show
+ └── types/               # TypeScript types and interfaces
+ ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Technical Overview
 
-## Learn More
+### Data Fetching
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Data fetching is handled using **React Query**.
+- React Query manages loading, error, caching, and refetching states without manual `useEffect`.
+- This approach keeps components clean and scalable.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Image Handling
+
+- Product images are displayed with a **generic placeholder** during loading to prevent layout shift.
+- Image placeholders are generic due to CRA being a client-only application.
+- Server-side image placeholder generation is intentionally not implemented.
+
+### Loading State
+
+- **Skeleton loading** is used for page-level loading states.
+- Skeletons provide better visual feedback and improve perceived performance compared to spinners.
+
+### Error Handling
+
+- An error state is displayed when API requests fail.
+- A retry mechanism is provided so users can recover without reloading the page.
+
+### Product Gallery
+
+- The product gallery is implemented using **Swiper**.
+- Each slide represents a product.
+- Changing the active slide updates the product information section.
+- Thumbnail navigation is used to enhance usability.
+
+### Styling
+
+- Styling is implemented using **Tailwind CSS**.
+- Reusable UI components are used to ensure consistency across the page.
+
+---
+
+## API Contract
+
+### GET /api/products
+
+Retrieve list of products.
+
+**Response:**
+
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "string",
+      "name": "string",
+      "price": "number",
+      "rating": "number",
+      "badge": "string",
+      "images": [
+        {
+          "id": "string",
+          "url": "string"
+        }
+      ]
+    }
+  ]
+}
+```
