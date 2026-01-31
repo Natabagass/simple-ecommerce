@@ -24,7 +24,7 @@ const Button = ({
             type={type}
             disabled={disable}
             onClick={onClick}
-            className={`${className} ${size} ${padding ? padding : 'px-4 py-6'} ${color ? color : 'bg-white'}  w-full text-sm sm:text-base disabled:bg-gray-300 font-medium disabled:cursor-not-allowed disabled:text-white disabled:border-none cursor-pointer rounded-lg`}>
+            className={`${className} ${size} ${padding ? padding : 'px-4 py-4 md:py-6'} ${color ? color : 'bg-white'}  w-full text-sm sm:text-base disabled:bg-gray-300 font-medium disabled:cursor-not-allowed disabled:text-white disabled:border-none cursor-pointer rounded-lg`}>
             {children}
         </button>
     )

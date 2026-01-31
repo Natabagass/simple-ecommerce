@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductResponse } from "../../../types/response/product";
+import BlurImage from "../../../components/blur-image";
 
 const ProductGallery = ({
     data,
@@ -22,9 +23,9 @@ const ProductGallery = ({
                 onSlideChange={(s) => setActiveIndex(s.activeIndex)}
                 className="w-full aspect-[1/2] max-h-[400px] md:max-h-[600px] rounded-xl overflow-hidden"
             >
-                {data.data.map((item, i) => (
+                {data?.data.map((item, i) => (
                     <SwiperSlide key={i}>
-                        <img
+                        <BlurImage
                             src={item.images[0].url}
                             alt={`Product ${item.name} - E-Commerce`}
                             className="w-full h-full object-cover"
@@ -40,9 +41,9 @@ const ProductGallery = ({
                 watchSlidesProgress
                 className="w-full md:w-[70%]"
             >
-                {data.data.map((item, i) => (
+                {data?.data.map((item, i) => (
                     <SwiperSlide key={i}>
-                        <img
+                        <BlurImage
                             src={item.images[0].url}
                             alt={`Product ${item.name} - E-Commerce`}
                             className="aspect-square object-cover rounded-lg cursor-pointer border hover:scale-110 hover:shadow-2xl transition-all duration-500"

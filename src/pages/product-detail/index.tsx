@@ -1,18 +1,26 @@
 import { useState } from "react";
-import ProductGallery from "../../components/product/gallery";
+import ProductGallery from "../../sections/product/gallery";
 import { useProduct } from "../../hooks/custom/useProduct";
-import ProductInfo from "../../components/product/info";
+import ProductInfo from "../../sections/product/info";
+import ErrorState from "../../components/error";
+import ProductDetailSkeleton from "../../sections/product/skeleton";
 
 
 const ProductDetailPage = () => {
-    const { data, isLoading, error } = useProduct();
+    const { data, isLoading, error,} = useProduct();
     const [activeIndex, setActiveIndex] = useState(0);
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return  (
+        <ProductDetailSkeleton />
+    );
 
-    const activeProduct = data.data[activeIndex];
+    if (error) return (
+        <ErrorState
+            title="Something went wrong."
+        />
+    )
 
-    console.log(data)
+    const activeProduct = data?.data[activeIndex];
 
     return (
         <div className="w-full flex min-h-screen items-center justify-center">

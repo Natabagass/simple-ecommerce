@@ -1,8 +1,8 @@
 import { Product } from "../../../types/response/product";
 import { formatUSD } from "../../../utils/converterUSD";
-import Button from "../../button";
-import StarRating from "../../star-rating";
-import Text from "../../text";
+import Button from "../../../components/button";
+import StarRating from "../../../components/star-rating";
+import Text from "../../../components/text";
 
 const ProductInfo = ({ data }: { data: Product }) => {
     return (
@@ -10,26 +10,26 @@ const ProductInfo = ({ data }: { data: Product }) => {
             <div className="flex flex-col gap-2">
                 <Text
                     weight="font-bold"
-                    style={{ color: colorBadge[data.badge] }}
+                    style={{ color: colorBadge[data?.badge] }}
                 >
-                    {data.badge}
+                    {data?.badge}
                 </Text>
 
                 <Text
                     weight="font-bold"
                     size="text-3xl"
                 >
-                    {data.name}
+                    {data?.name}
                 </Text>
             </div>
 
-            <StarRating rating={data.rating} size={32} />
+            <StarRating rating={data?.rating} size={32} />
 
             <Text
                 weight="font-bold"
                 size="text-4xl"
             >
-                {formatUSD(data.price)}
+                {formatUSD(data?.price)}
             </Text>
 
             <div className="w-full my-6 h-1 bg-gray-200" />
