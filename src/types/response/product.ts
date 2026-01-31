@@ -8,7 +8,7 @@ export interface Product {
     name: string;
     price: number;
     rating: number;
-    badge: string;
+    badge: ProductBadge;
     images: ProductImage[];
 }
 
@@ -16,3 +16,10 @@ export interface ProductResponse {
     status: "success";
     data: Product[];
 }
+
+
+export type ProductBadge =
+    | "SALE"
+    | "SELL"
+    | "NEW"
+    | "BESTSELLER";

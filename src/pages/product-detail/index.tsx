@@ -17,7 +17,7 @@ const ProductDetailPage = () => {
     return (
         <div className="w-full flex min-h-screen items-center justify-center">
             <div className="w-full max-w-6xl px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
                     <ProductGallery
                         data={data}
                         activeIndex={activeIndex}
